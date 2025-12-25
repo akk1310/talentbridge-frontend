@@ -38,7 +38,8 @@ const Feed = () => {
       size,
     };
 
-    const res = await axios.post("http://localhost:8080/posts/filter", payload);
+    const res = await api.post("/posts/filter", payload);
+
 
     setPosts(res.data.posts);
     setPage(res.data.page);
