@@ -5,9 +5,7 @@ import App from './App.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import Layout from './Layout.jsx'
 import Home from './pages/Home.jsx'
-import Create from './pages/Create.jsx'
 import Feed from './pages/Feed.jsx'
-import Dashboard from './pages/Dashboard.jsx';
 import EmployerLogin from './pages/EmployerLogin.jsx'
 import EmployerRegister from './pages/EmployerRegister.jsx'
 import EmployerDashboard from './pages/EmployerDashboard.jsx'
@@ -22,8 +20,7 @@ const router = createBrowserRouter(
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />}/>
       <Route path='/employer'>
-          {/* <Route path='/employer/dashboard' element={<Dashboard/>} /> */}
-          {/* <Route path='/employer/create' element={<Create />} /> */}
+          
           <Route path='/employer/login' element={<EmployerLogin />} />
           <Route path='/employer/register' element={<EmployerRegister />} />
           <Route path='/employer/dashboard' element={<EmployerDashboard />} />
