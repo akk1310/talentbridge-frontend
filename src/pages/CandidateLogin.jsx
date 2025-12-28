@@ -9,6 +9,8 @@ const CandidateLogin = () => {
 
   const login = async () => {
     try {
+      localStorage.removeItem("candidate");
+       localStorage.removeItem("token");
       const res = await api.post("/candidate/login", { email, password });
 
       localStorage.setItem(

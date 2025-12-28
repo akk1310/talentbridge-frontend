@@ -5,17 +5,23 @@ const api = axios.create({
 });
 
 /*  Attach JWT automatically */
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("token");
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
 
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+  // ⛔ Do NOT attach token for auth routes
+  if (
+    token &&
+    !config.url.includes("/auth") &&
+    !config.url.includes("/candidate/login") &&
+    !config.url.includes("/candidate/register") &&
+    !config.url.includes("/employer/login") &&
+    !config.url.includes("/employer/register")
+  ) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
 
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+  return config;
+});
+
 
 export default api;

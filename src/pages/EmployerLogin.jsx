@@ -16,6 +16,8 @@ const EmployerLogin = () => {
 
     try {
       setLoading(true);
+      localStorage.removeItem("employer");
+       localStorage.removeItem("token");
       const res = await api.post("/auth/login", { email, password });
 
       localStorage.setItem("employer", JSON.stringify(res.data.employer));
